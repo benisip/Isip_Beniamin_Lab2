@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Isip_Beniamin_Lab2.Data;
 using Isip_Beniamin_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Isip_Beniamin_Lab2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : BookCategoriesPageModel
     {
         private readonly Isip_Beniamin_Lab2.Data.Isip_Beniamin_Lab2Context _context;
