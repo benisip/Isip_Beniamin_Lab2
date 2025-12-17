@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Isip_Beniamin_Lab2.Models
 {
@@ -12,6 +13,14 @@ namespace Isip_Beniamin_Lab2.Models
         public int? AuthorID { get; set; }
 
         public Author? Author { get; set; } //navigation property
+        
+        public string BookFullName
+        {
+            get
+            {
+                return Title + " by " + Author?.FullName;
+            }
+        }
 
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Price { get; set; }
@@ -23,6 +32,7 @@ namespace Isip_Beniamin_Lab2.Models
         public int? PublisherID { get; set; }
         public Publisher? Publisher { get; set; } //navigation property
 
+        public ICollection<Borrowing>? Borrowings { get; set; } //navigation property
         public ICollection<BookCategory>? BookCategories { get; set; } //navigation property
     }
 }
